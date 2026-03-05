@@ -100,6 +100,7 @@ class KickBan(commands.GroupCog):
             if reason:
                 msg += " The given reason is: " + reason
             msg += "\n\nThis ban does not expire."
+            msg += "\n\nIf you would like to appeal your ban, join the [appeals server](https://discord.gg/3gp4xJkKdx) and DM <@1464770820797632699>."
             await send_dm_message(member, msg, ctx)
 
         try:
@@ -139,7 +140,7 @@ class KickBan(commands.GroupCog):
         msg = f"You were banned from {interaction.guild.name}."
         if reason:
             msg += " The given reason is: " + reason
-        msg += "\nIf you think this is a mistake, contact Aep on discord to appeal."
+        msg += "\n\nIf you would like to appeal your ban, join the [appeals server](https://discord.gg/3gp4xJkKdx) and DM <@1464770820797632699>."
 
         if duration is not None:
             timestamp = datetime.datetime.now(self.bot.tz)
@@ -225,7 +226,7 @@ class KickBan(commands.GroupCog):
             if reason:
                 msg += " The given reason is: " + reason
             msg += f"\n\nThis ban lasts until {unban_time_string}."
-            msg += "\n\nIf you think this is a mistake, contact Aep on discord to appeal."
+            msg += "\n\nIf you would like to appeal your ban, join the [appeals server](https://discord.gg/3gp4xJkKdx) and DM <@1464770820797632699>."
             msg += "\nPlease note: age-based timebans are not appealable, as minimum age is a Discord ToS/legal requirement."
             await send_dm_message(member, msg, ctx)
         try:
