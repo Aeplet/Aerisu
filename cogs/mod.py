@@ -362,7 +362,7 @@ class Mod(commands.GroupCog):
             if not (perms.view_channel and perms.read_message_history and perms.manage_messages):
                 continue
             try:
-                async for msg in channel.history(limit=1000):
+                async for msg in channel.history(limit=amount):
                     if msg.author.id == member.id:
                         await msg.delete()
                         total_deleted += 1
