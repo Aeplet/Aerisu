@@ -38,8 +38,6 @@ class Events(commands.Cog):
     user_ping_antispam: dict[int, Deque[tuple[discord.Message, int]]] = {}
     user_message_antispam: dict[int, list[discord.Message]] = {}
     userbot_yeeter: dict[int, list[discord.abc.MessageableChannel]] = {}
-    channel_antispam: dict[int, list[discord.Message]] = {}
-    invite_antispam: dict[int, list[discord.Message]] = {}
 
     async def userbot_yeeter_pop(self, message: discord.Message):
         await asyncio.sleep(40)
