@@ -182,11 +182,6 @@ class Lockdown(commands.Cog):
             else:
                 channels.append(ctx.channel)
 
-        is_helper = not check_staff(self.bot, "Moderator", author.id)
-
-        if is_helper and any(c not in self.bot.assistance_channels for c in channels):
-            return await ctx.send("You can only unlock assistance channels.")
-
         unlocked = []
 
         for c in channels:
