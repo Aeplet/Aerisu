@@ -29,7 +29,7 @@ class Soap(commands.Cog):
         if ctx.guild is None:
             raise commands.NoPrivateMessage()
         author = ctx.author
-        if not check_staff(self.bot, 'Helper', author.id) and not check_staff(self.bot, 'Staff', author.id):
+        if not check_staff(self.bot, 'Moderator', author.id) and not check_staff(self.bot, 'Staff', author.id):
             raise InsufficientStaffRank("You can't use this command.")
         return True
 
