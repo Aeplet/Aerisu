@@ -145,7 +145,7 @@ class KurisuCooldown:
         self.per = per
 
     def __call__(self, ctx: commands.Context) -> Optional[commands.Cooldown]:
-        if check_staff(ctx.bot, 'Helper', ctx.author.id):
+        if check_staff(ctx.bot, 'Moderator', ctx.author.id):
             return None
         else:
             return commands.Cooldown(self.rate, self.per)
