@@ -185,7 +185,7 @@ class KickBan(commands.GroupCog):
         await self.restrictions.remove_restriction(user, Restriction.Ban)
         self.bot.actions.append(f'bu:{user.id}')
         await ctx.guild.unban(user, reason=reason)
-        await ctx.send(f"User {user.id} | {user} is now unbanned.")
+        await ctx.send(f"User {user.id} | {user.mention} is now unbanned.")
         await self.bot.logs.post_action_log(ctx.author, user, 'unban', reason=reason)
 
     @is_staff("Moderator")
