@@ -180,12 +180,12 @@ class KickBan(commands.GroupCog):
         try:
             await ctx.guild.fetch_ban(user)
         except discord.errors.NotFound:
-            return await ctx.send(f"{user} is not banned!")
+            return await ctx.send(f"User {user.id} | {user} is not banned!")
 
         await self.restrictions.remove_restriction(user, Restriction.Ban)
         self.bot.actions.append(f'bu:{user.id}')
         await ctx.guild.unban(user, reason=reason)
-        await ctx.send(f"{user} is now unbanned.")
+        await ctx.send(f"User {user.id} | {user} is now unbanned.")
         await self.bot.logs.post_action_log(ctx.author, user, 'unban', reason=reason)
 
     @is_staff("Moderator")
