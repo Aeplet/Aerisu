@@ -23,18 +23,6 @@ class Logs(commands.Cog):
         self.restrictions = self.bot.restrictions
         self.warns = self.bot.warns
 
-    welcome_msg = """
-Hello {0}, welcome to the {1} server on Discord!
-
-Please review all of the rules in {2} before chatting.
-
-You can find a list of staff in {2}.
-
-By participating in this server, you acknowledge that user data (including messages, user IDs, user tags) will be collected and logged for moderation purposes. If you disagree with this collection, please leave the server immediately.
-
-Thanks for stopping by and have a good time!
-"""  # ughhhhhhhh
-
     async def init_rules(self):
         await self.bot.wait_until_all_ready()
         self.logo_nitro = discord.utils.get(self.bot.guild.emojis, name="nitro") or discord.PartialEmoji.from_str("⁉")
@@ -59,10 +47,6 @@ Thanks for stopping by and have a good time!
             embed.description = softban.reason
             await self.bot.channels['server-logs'].send(msg, embed=embed)
             return
-        if not member.flags.did_rejoin:
-            if not self.bot.configuration.auto_probation:
-                await send_dm_message(member, self.welcome_msg.format(member.name, member.guild.name,
-                                                                      self.bot.channels['rules'].mention))
         roles = []
         async for r in self.restrictions.get_restrictions_by_user(member.id):
             restriction = Restriction(r[2])
