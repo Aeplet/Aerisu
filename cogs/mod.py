@@ -541,6 +541,17 @@ class Mod(commands.GroupCog):
 
     @is_staff("Moderator")
     @commands.guild_only()
+    @commands.command(aliases=["nohelp", "yesnthelp"])
+    async def silenttakehelp(self, ctx: GuildContext, member: discord.Member | discord.User, *, reason: Optional[str]):
+        """Remove access to the assistance channels, silneltly Staff and Helpers only."""
+        if await check_bot_or_staff(ctx, member, "takehelp"):
+            return
+        await self.bot.restrictions.add_restriction(member, Restriction.TakeHelp, reason, True)
+        await ctx.send(f"{member.mention} can no longer access the help channels.")
+        await self.logs.post_action_log(ctx.author, member, 'take-help', reason=reason)
+
+    @is_staff("Moderator")
+    @commands.guild_only()
     @commands.command(aliases=["yeshelp", "nonthelp"])
     async def givehelp(self, ctx: GuildContext, member: discord.Member | discord.User, *, reason: Optional[str]):
         """Restore access to the assistance channels. Staff and Helpers only."""
