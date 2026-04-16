@@ -57,6 +57,10 @@ class Events(commands.Cog):
         except KeyError:
             pass
 
+    async def scan_message(self, message: discord.Message, is_edit=False):
+        if message.author.id in self.configuration.watch_list:
+            await self.bot.logs.post_watch_log(message, is_edit)
+
     @commands.Cog.listener()
     async def on_message(self, message: discord.Message):
         if message.guild is None or message.author.bot or message.type is discord.MessageType.auto_moderation_action:
@@ -105,7 +109,7 @@ class Events(commands.Cog):
                         await message.delete();
                     except discord.Forbidden:
                         self.bot.actions.remove(f'wk:{message.author.id}')
-        # await self.scan_message(message) replaced by automod
+        await self.scan_message(message)
         # self.bot.loop.create_task(self.user_ping_check(message)) replaced by automod
         # self.bot.loop.create_task(self.user_spam_check(message)) replaced by automod
         # self.bot.loop.create_task(self.channel_spam_check(message)) replaced by automod
@@ -120,7 +124,7 @@ class Events(commands.Cog):
             return
         if message_before.content == message_after.content:
             return
-        # await self.scan_message(message_after, is_edit=True) replaced by automod
+        await self.scan_message(message_after, is_edit=True)
 
 
 async def setup(bot):
