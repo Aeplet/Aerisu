@@ -179,6 +179,15 @@ class ConfigurationManager(BaseManager, db_manager=ConfigurationDatabaseManager)
                     self.nofilter_list.append(channel.id)
         return res
 
+    async def set_mod_channel(self, channel: discord.TextChannel | discord.Thread | discord.VoiceChannel, mod_status: bool):
+        db_channel = await self.get_channel(channel.id)
+        res = None
+        if not db_channel:
+            res = await self.add_channel(channel.name, channel)
+        if db_channel or res:
+            res = await self.db.set_mod_channel(channel.id, mod_status)
+        return res
+
     async def add_changed_roles(self, roles: 'list[tuple[int, Optional[bool]]]', channel: discord.TextChannel | discord.Thread | discord.VoiceChannel):
         await self.db.add_changed_roles(roles, channel.id)
 
