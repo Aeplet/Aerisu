@@ -744,6 +744,8 @@ class Mod(commands.GroupCog):
         if not db_channel:
             await self.configuration.add_channel(channel.name, channel)
             db_channel = await self.configuration.get_channel(channel.id)
+        
+        await self.configuration.set_mod_channel(channel.id, value)
         await ctx.send(f"{channel.mention} is {'now' if value else 'no longer'} a mod channel.")
 
     @is_staff("Moderator")

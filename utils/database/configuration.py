@@ -113,6 +113,9 @@ class ConfigurationDatabaseManager(BaseDatabaseManager, tables=tables):
 
     async def set_nofilter_channel(self, channel_id: int, filtered: bool):
         return await self._update('channels', {'filtered': filtered}, id=channel_id)
+    
+    async def set_mod_channel(self, channel_id: int, mod_channel_status: bool):
+        return await self._update('channels', {'mod_channel': mod_channel_status}, id=channel_id)
 
     async def get_all_nofilter_channels(self) -> 'AsyncGenerator[int, None]':
         async for channel_id, *_ in self._select('channels', filtered=False):
