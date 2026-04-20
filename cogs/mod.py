@@ -773,7 +773,7 @@ class Mod(commands.GroupCog):
         else:
             await ctx.send_help(ctx.command)
 
-    @is_staff("Moderator")
+    @is_staff("Owner")
     @commands.command()
     async def username(self, ctx: KurisuContext, *, username: str):
         """Sets bot name. Staff only."""
