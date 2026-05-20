@@ -27,7 +27,7 @@ class Blah(commands.Cog):
         await self.bot.channels['announcements'].send(message, allowed_mentions=discord.AllowedMentions(everyone=True, roles=True))
 
     @is_staff("Moderator")
-    @commands.command()
+    @commands.hybrid_command()
     async def speak(self, ctx: KurisuContext, channel: discord.TextChannel, *, message: str):
         """Sends a message to a channel."""
         await channel.send(message, allowed_mentions=discord.AllowedMentions(everyone=True, roles=True))
