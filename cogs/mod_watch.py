@@ -51,7 +51,7 @@ class Modwatch(commands.Cog):
         await self.logs.post_action_log(ctx.author, member, 'unwatch')
 
     @is_staff("Moderator")
-    @commands.command()
+    @commands.command(name="listwatch", aliases=["watchlist"])
     async def listwatch(self, ctx: GuildContext):
         """List the members in the watchlist."""
         lines = []
