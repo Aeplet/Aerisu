@@ -87,25 +87,6 @@ class Assistance(commands.GroupCog):
                 res = j['results']
         return res
 
-    @check_if_user_can_sr()
-    @commands.guild_only()
-    @commands.command(aliases=["sr"])
-    async def staffreq(self, ctx: GuildContext, *, msg_request: str = ""):
-        """Request staff, with optional additional text."""
-        author = ctx.author
-        await ctx.message.delete()
-        msg = f"❗️ **Assistance requested**: {ctx.channel.mention} by {author.mention} | {self.bot.escape_text(author)} @here"
-        if msg_request != "":
-            embed = discord.Embed(color=discord.Color.gold())
-            embed.description = msg_request
-        else:
-            embed = None
-        await self.bot.channels['mods'].send(msg, embed=embed, allowed_mentions=discord.AllowedMentions(everyone=True))  # type: ignore
-        try:
-            await author.send(f"✅ Online staff have been notified of your request in {ctx.channel.mention}.", embed=embed)  # type: ignore
-        except discord.errors.Forbidden:
-            pass
-
     @is_staff('Moderator')
     @commands.guild_only()
     @commands.command()
