@@ -675,6 +675,26 @@ class Mod(commands.GroupCog):
 
     @is_staff("Moderator")
     @commands.guild_only()
+    @commands.command(name="takegeneral", aliases=["nogeneral", "yesntgeneral", "takeofftopic", "takeot", "noot", "noofftopic", "yesntofftopic"])
+    async def takegeneral(self, ctx: GuildContext, member: discord.Member | discord.User, *, reason: Optional[str]):
+        """Remove permissions to the general/off-topic channels. Staff only."""
+        if await check_bot_or_staff(ctx, member, "takegeneral"):
+            return
+        await self.restrictions.add_restriction(member, Restriction.NoGeneral, reason)
+        await ctx.send(f"{member.mention} can no longer access the general/off-topic channels.")
+        await self.logs.post_action_log(ctx.author, member, 'no-general', reason=reason)
+
+    @is_staff("Moderator")
+    @commands.guild_only()
+    @commands.command(name="givegeneral", aliases=["yesgeneral", "giveot", "nontgeneral"])
+    async def givegeneral(self, ctx: GuildContext, member: discord.Member | discord.User, *, reason: Optional[str]):
+        """Restore permissions to the general/off-topic channels. Staff only."""
+        await self.restrictions.remove_restriction(member, Restriction.NoGeneral)
+        await ctx.send(f"{member.mention} can access the general/off-topic channels again.")
+        await self.logs.post_action_log(ctx.author, member, 'give-general', reason=reason)
+
+    @is_staff("Moderator")
+    @commands.guild_only()
     @commands.command()
     async def takesmallhelp(self, ctx: GuildContext, members: commands.Greedy[discord.Member]):
         """Remove access to small help channel. Staff and Helpers only."""

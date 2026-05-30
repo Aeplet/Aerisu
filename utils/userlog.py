@@ -44,6 +44,9 @@ action_messages = {
     'no-react': ('\N{NO ENTRY}', 'Reaction permissions taken', 'took reaction permissions from {}'),
     'give-react': ('\N{HEAVY LARGE CIRCLE}', 'Reaction permissions restored', 'restored reaction permissions for {}'),
 
+    'no-general': ('\N{NO ENTRY}', 'General/off-topic permissions taken', 'took general/off-topic permissions from {}'),
+    'give-general': ('\N{HEAVY LARGE CIRCLE}', 'General/off-topic permissions restored', 'restored general/off-topic permissions permissions for {}'),
+
     'give-art': ('\N{HEAVY LARGE CIRCLE}', 'Art access restore', 'restored art access for {}'),
     'take-art': ('\N{NO ENTRY SIGN}', 'Art access taken', 'took art access from {}'),
     'take-animals': ('\N{NO ENTRY SIGN}', 'Animal access taken', 'took animals access from {}'),

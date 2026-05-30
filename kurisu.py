@@ -282,7 +282,7 @@ class Kurisu(commands.Bot):
                 logger.warning("Failed to find channel %s", n)
 
     async def load_roles(self):
-        roles = ['Staff', 'Owner', 'Probation', "No-U", "User", "Announcement", "VoiceChat", "Server Booster", '🍰', "Admin", "Moderator", "No-Help", "help-mute", "meta-mute", "Small Help Access", "dev-mute", "No-React", "Muted"]
+        roles = ['Staff', 'Owner', 'Probation', "No-U", "User", "Announcement", "VoiceChat", "Server Booster", '🍰', "Admin", "Moderator", "No-Help", "help-mute", "meta-mute", "Small Help Access", "dev-mute", "No-React", "Muted", "No-General"]
 
         for n in roles:
             db_role = await self.configuration.get_role(n)

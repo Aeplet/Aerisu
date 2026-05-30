@@ -36,6 +36,7 @@ class Restriction(Enum):
     NoU = 'No-U'
     DevMute = 'dev-mute'
     NoReact = 'No-React'
+    NoGeneral = 'No-General'
 
 
 messages = {Restriction.Muted: "You were muted!",
@@ -51,7 +52,8 @@ messages = {Restriction.Muted: "You were muted!",
             Restriction.NoMemes: "You lost access to meme commands",
             Restriction.NoU: "You've been sent to the void",
             Restriction.DevMute: "You were muted in the dev channels!",
-            Restriction.NoReact: "Your reaction permissions were revoked!"}
+            Restriction.NoReact: "Your reaction permissions were revoked!",
+            Restriction.NoGeneral: "You lost access to the general/off-topic channels!"}
 
 
 class TimedRestriction:
