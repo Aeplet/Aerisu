@@ -305,6 +305,7 @@ class KickBan(commands.GroupCog):
         except discord.errors.NotFound:
             return await ctx.send(f"\{user} ({user.id}) is not banned!")
 
+        self.bot.actions.append(f'bu:{user.id}')
         await ctx.guild.unban(user, reason=f"Changing ban reason to {reason}")
         await ctx.guild.ban(user, reason=reason)
 
