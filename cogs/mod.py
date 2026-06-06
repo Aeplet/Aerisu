@@ -968,7 +968,7 @@ class Mod(commands.GroupCog):
     @is_staff("Admin")
     @commands.bot_has_permissions(manage_roles=True)
     @commands.guild_only()
-    @commands.command(name="temprole", aliases=["temporaryrole", "trole", "timerole"])
+    @commands.command(name="temprole", aliases=["temporaryrole", "trole", "timerole", "timedrole"])
     async def temprole_command(self, ctx: GuildContext, member: discord.Member, role: discord.Role, length: str = "", *, reason: Optional[str]):
         """Give a temporary role to a member. Lasts 24 hours by default."""
 
