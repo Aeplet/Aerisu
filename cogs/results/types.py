@@ -90,7 +90,7 @@ class ConsoleErrorInfo:
 
 # Helper constants
 REPORT_DETAILS = 'You should report relevant details to \
-[the Kurisu repository](https://github.com/nh-server/Kurisu/issues).'
+[the Aerisu repository](https://github.com/Wiivolution/Aerisu/issues).'
 
 UNKNOWN_MODULE = ResultInfo(f'Invalid or unknown module. Are you sure you \
 typed the error code in correctly? {REPORT_DETAILS}')
