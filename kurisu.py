@@ -170,7 +170,7 @@ class Kurisu(commands.Bot):
 
         self.err_channel: Optional[discord.TextChannel | discord.VoiceChannel] = None
         self.actions = []
-        if OWNER_IDs != None then self.owner_ids = OWNER_IDs
+        self.owner_ids = OWNER_IDs if OWNER_IDs != None else []
         self.pruning = False
         self.emoji = discord.PartialEmoji.from_str("⁉")
         self.colour = discord.Colour(0xb01ec3)
