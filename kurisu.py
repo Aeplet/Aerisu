@@ -104,7 +104,6 @@ else:
     TOKEN = kurisu_config['Main']['token']
     raw_owner_ids = kurisu_config['Main']['owner_user_ids']
     OWNER_IDs = [int(uid.strip()) for uid in raw_owner_ids.split(',') if uid.strip()]
-    bot.owner_ids = OWNER_IDs
     DATABASE_URL = kurisu_config['Main']['database_url']
     SERVER_LOGS_URL = kurisu_config['Main']['server_logs_url']
 
@@ -171,6 +170,7 @@ class Kurisu(commands.Bot):
 
         self.err_channel: Optional[discord.TextChannel | discord.VoiceChannel] = None
         self.actions = []
+        if OWNER_IDs != None then self.owner_ids = OWNER_IDs
         self.pruning = False
         self.emoji = discord.PartialEmoji.from_str("⁉")
         self.colour = discord.Colour(0xb01ec3)
