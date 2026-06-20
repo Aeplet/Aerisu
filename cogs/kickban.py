@@ -67,7 +67,7 @@ class KickBan(commands.GroupCog):
         await self.bot.logs.post_action_log(ctx.author, member, 'kick', reason=reason)
 
     @is_staff("Moderator")
-    @commands.bot_has_permissions(kick_members=True)
+    @commands.bot_has_permissions(ban_members=True)
     @commands.command(name="scamkick")
     async def scamkick(self, ctx: GuildContext, member: discord.Member):
         """Kicks a user, logs automatically, informs of reason for kick."""
@@ -80,6 +80,7 @@ class KickBan(commands.GroupCog):
         await send_dm_message(member, msg, ctx)
         try:
             await ctx.guild.ban(member, reason=reason, delete_message_days=1)
+            self.bot.actions.append(f'bu:{user.id}')
             await ctx.guild.unban(member)
         except discord.errors.Forbidden:
             await ctx.send("💢 I don't have permission to do this.")
