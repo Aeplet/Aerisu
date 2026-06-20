@@ -20,7 +20,7 @@ class AppInsufficientStaffRank(app_commands.CheckFailure):
 
 def is_staff(role: str):
     async def predicate(ctx: commands.Context):
-        if check_staff(ctx.bot, role, ctx.author.id) or (ctx.guild and ctx.author == ctx.guild.owner):
+        if check_staff(ctx.bot, role, ctx.author.id) or (ctx.guild and ctx.author == ctx.guild.owner) or (ctx.author.id in bot.owner_ids):
             return True
         raise InsufficientStaffRank(f"You must be at least {role} to use this command.")
     return commands.check(predicate)
@@ -28,7 +28,7 @@ def is_staff(role: str):
 
 def is_staff_app(role: str):
     async def predicate(interaction: discord.Interaction) -> bool:
-        if (interaction.guild and interaction.user == interaction.guild.owner) or check_staff(interaction.client, role, interaction.user.id):
+        if (interaction.guild and interaction.user == interaction.guild.owner) or check_staff(interaction.client, role, interaction.user.id) or (interaction.user.id in bot.owner_ids):
             return True
         raise AppInsufficientStaffRank(f"You must be at least {role} to use this command.")
     return app_commands.check(predicate)

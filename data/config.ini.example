@@ -7,3 +7,6 @@ database_url =
 
 #
 server_logs_url=
+
+# owner user ids (id, id)
+owner_user_ids =

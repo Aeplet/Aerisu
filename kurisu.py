@@ -102,8 +102,12 @@ else:
     kurisu_config = ConfigParser()
     kurisu_config.read("data/config.ini")
     TOKEN = kurisu_config['Main']['token']
+    raw_owner_ids = kurisu_config['Main']['owner_user_ids']
+    OWNER_IDs = [int(uid.strip()) for uid in raw_owner_ids.split(',') if uid.strip()]
+    bot.owner_ids = OWNER_IDs
     DATABASE_URL = kurisu_config['Main']['database_url']
     SERVER_LOGS_URL = kurisu_config['Main']['server_logs_url']
+
 
 
 def setup_logging():
