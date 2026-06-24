@@ -200,6 +200,22 @@ class Mod(commands.GroupCog):
         for page in paginator.pages:
             await send_dm_message(author, page)
 
+    @is_staff("Owner")
+    @commands.guild_only()
+    @commands.command(aliases=['gigaunyeet'])
+    async def multiunban(self, ctx: GuildContext, users: commands.Greedy[int]):
+        """Multi-unban users."""
+        author = ctx.author
+        msg = "failed:\n"
+        for m in users:
+            try:
+                await self.bot.guild.unban(discord.Object(id=m))
+            except (discord.errors.NotFound, discord.errors.Forbidden) as e:
+                msg += f"{m}:\n  {e.text}\n"
+        paginator = paginate_message(msg)
+        for page in paginator.pages:
+            await send_dm_message(author, page)
+
     @is_staff("Moderator")
     @commands.guild_only()
     @commands.command()
