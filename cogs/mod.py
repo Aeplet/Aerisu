@@ -209,6 +209,7 @@ class Mod(commands.GroupCog):
         msg = "failed:\n"
         for m in users:
             try:
+                self.bot.actions.append(f'bu:{user.id}')
                 await self.bot.guild.unban(discord.Object(id=m))
             except (discord.errors.NotFound, discord.errors.Forbidden) as e:
                 msg += f"{m}:\n  {e.text}\n"
