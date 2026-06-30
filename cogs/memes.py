@@ -136,7 +136,7 @@ class Memes(commands.Cog):
     @commands.command(hidden=True)
     async def hru(self, ctx: KurisuContext):
         """Finally asking how Aerisu is."""
-        feeling_list = ["AWFUL", "shut up", "decent", "I am a bot, what the fuck do you think?", "DREAMING ABOUT OBTAINING XS00000003", "Look at the assistance channel, that'll give you the answer.", "Why are you all obsessed with how I'm feeling?", "dying", "As an AI Assistant, I do not have emotions or feelings like Humans do. so stop asking"]
+        feeling_list = ["AWFUL", "shut up", "decent", "I am a bot, what the fuck do you think?", "DREAMING ABOUT OBTAINING XS00000003", "Look at the assistance channel, that'll give you the answer.", "Why are you all obsessed with how I'm feeling?", "icl ts pmo sm n sb rn ngl, r u srsly srs n fr rn vro? lo atp js go b fr vro, idek nm, brb gng gtg atm lmao, bt ts pyo 2 js lmk lol onb fr nty b fr rn lk 💔💔💔💔", "https://github.com/torvalds/linux/blob/4edcdefd4083ae04b1a5656f4be6cd83ae919ef4/net/core/skbuff.c#L5425", "dying", "🧾"]
         await ctx.send(random.choice(feeling_list))
 
     @commands.command(hidden=True)
