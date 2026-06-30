@@ -61,12 +61,13 @@ class Events(commands.Cog):
         if message.author.id in self.configuration.watch_list:
             await self.bot.logs.post_watch_log(message, is_edit)
         if message.role_mentions:
-            if role == self.bot.roles["DONTPINGDONTPING"]:
-                await self.restrictions.add_restriction(message.author, Restriction.Probation, f"Pinged honeypot role {role.mention}")
-                mes = await self.bot.logs.post_message_log(":envelope: **Message posted**",
+            for role in message.role_mentions:
+                if role == self.bot.roles["DONTPINGDONTPING"]:
+                    await self.restrictions.add_restriction(message.author, Restriction.Probation, f"Pinged honeypot role {role.mention}")
+                    mes = await self.bot.logs.post_message_log(":envelope: **Message posted**",
                                                                    f"{message.author.mention} pinged honeypot role {role.mention}",
                                                                    message.content)
-                await message.delete();
+                    await message.delete();
 
     @commands.Cog.listener()
     async def on_message(self, message: discord.Message):
