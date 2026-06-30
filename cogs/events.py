@@ -60,6 +60,13 @@ class Events(commands.Cog):
     async def scan_message(self, message: discord.Message, is_edit=False):
         if message.author.id in self.configuration.watch_list:
             await self.bot.logs.post_watch_log(message, is_edit)
+        if message.role_mentions:
+            if role == self.bot.roles["DONTPINGDONTPING"]:
+                await self.restrictions.add_restriction(message.author, Restriction.Probationf"Pi {message.channel.mention}")
+                mes = await self.bot.logs.post_message_log(":envelope: **Message posted**",
+                                                                   f"{message.author.mention} posted a message in killbox {message.channel.mention}",
+                                                                   message.content)                                         message.content)
+                await message.delete();
 
     @commands.Cog.listener()
     async def on_message(self, message: discord.Message):
