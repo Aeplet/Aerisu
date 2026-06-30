@@ -62,9 +62,9 @@ class Events(commands.Cog):
             await self.bot.logs.post_watch_log(message, is_edit)
         if message.role_mentions:
             if role == self.bot.roles["DONTPINGDONTPING"]:
-                await self.restrictions.add_restriction(message.author, Restriction.Probationf"Pi {message.channel.mention}")
+                await self.restrictions.add_restriction(message.author, Restriction.Probation, f"Pinged honeypot role {role.mention}")
                 mes = await self.bot.logs.post_message_log(":envelope: **Message posted**",
-                                                                   f"{message.author.mention} posted a message in killbox {message.channel.mention}",
+                                                                   f"{message.author.mention} pinged honeypot role {role.mention}",
                                                                    message.content)
                 await message.delete();
 
