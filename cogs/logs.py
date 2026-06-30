@@ -4,6 +4,7 @@ import discord
 
 from discord.ext import commands
 from discord.utils import format_dt
+from utils.checks import check_staff
 from typing import TYPE_CHECKING
 from utils.utils import send_dm_message
 from utils import Restriction, OptionalMember
@@ -163,7 +164,7 @@ class Logs(commands.Cog):
                 for role in roles_after:
                     if role.name == "@everyone":
                         continue
-                    if role == self.bot.roles["DONTPINGDONTPING"]:
+                    if role == self.bot.roles["DONTPINGDONTPING"] and not check_staff(self.bot, 'Moderator', member.id):
                         self.bot.actions.append(f'wk:{member_after.id}')
                         await member_after.kick(reason="Suspicious activity. (collected honeypot role)")
                     role_name = self.bot.escape_text(role.name)
