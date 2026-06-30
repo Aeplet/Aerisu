@@ -65,7 +65,7 @@ class Events(commands.Cog):
                 await self.restrictions.add_restriction(message.author, Restriction.Probationf"Pi {message.channel.mention}")
                 mes = await self.bot.logs.post_message_log(":envelope: **Message posted**",
                                                                    f"{message.author.mention} posted a message in killbox {message.channel.mention}",
-                                                                   message.content)                                         message.content)
+                                                                   message.content)
                 await message.delete();
 
     @commands.Cog.listener()
