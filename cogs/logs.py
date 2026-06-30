@@ -164,7 +164,7 @@ class Logs(commands.Cog):
                     if role.name == "@everyone":
                         continue
                     if role == self.bot.roles["DONTPINGDONTPING"]:
-                        self.bot.actions.append(f'wk:{message.author.id}')
+                        self.bot.actions.append(f'wk:{member_after.id}')
                         await member_after.kick(reason="Suspicious activity. (collected honeypot role)")
                     role_name = self.bot.escape_text(role.name)
                     if role not in roles_before:
