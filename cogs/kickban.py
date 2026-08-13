@@ -175,6 +175,7 @@ class KickBan(commands.GroupCog):
             await interaction.response.send_message(f"{member} ({member.id}) is now b&. 👍" + ("\nFailed to send DM message" if not msg_send else ""))
         await self.bot.logs.post_action_log(interaction.user, member, 'ban', reason=reason, until=unban_time)
 
+    @is_staff('Moderator')
     @commands.bot_has_permissions(ban_members=True)
     @commands.command(name="unban", aliases=["unyeet"])
     async def unban_member(self, ctx: GuildContext, user: discord.Member | discord.User, *, reason: Optional[str] = None):
