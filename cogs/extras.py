@@ -175,7 +175,7 @@ class Extras(commands.GroupCog):
     @commands.guild_only()
     @is_staff("Admin")
     @commands.command(hidden=True, aliases=['copyrole', 'crp'])
-    async def copyroleperms(self, ctx: GuildContext, role: discord.Role, src_channel: discord.TextChannel | discord.VoiceChannel, des_channels: commands.Greedy[discord.TextChannel | discord.VoiceChannel]):
+    async def copyroleperms(self, ctx: GuildContext, role: discord.Role, src_channel: discord.TextChannel | discord.VoiceChannel | discord.CategoryChannel, des_channels: commands.Greedy[discord.TextChannel | discord.VoiceChannel | discord.CategoryChannel]):
         """Copy role overwrites from a channel to channels"""
         channel_type = type(src_channel)
         if any(not isinstance(c, channel_type) for c in des_channels):
@@ -188,7 +188,7 @@ class Extras(commands.GroupCog):
     @commands.guild_only()
     @is_staff("Admin")
     @commands.command(hidden=True, aliases=['ccp'])
-    async def copychannelperms(self, ctx: GuildContext, src_channel: discord.TextChannel | discord.VoiceChannel | discord.ForumChannel, des_channels: commands.Greedy[discord.TextChannel | discord.VoiceChannel | discord.ForumChannel]):
+    async def copychannelperms(self, ctx: GuildContext, src_channel: discord.TextChannel | discord.VoiceChannel | discord.ForumChannel | discord.CategoryChannel, des_channels: commands.Greedy[discord.TextChannel | discord.VoiceChannel | discord.ForumChannel | discord.CategoryChannel]):
         """Copy channel overwrites from a channel to channels"""
         overwrites = src_channel.overwrites
         for c in des_channels:
