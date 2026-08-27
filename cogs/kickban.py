@@ -309,7 +309,7 @@ class KickBan(commands.GroupCog):
 
         self.bot.actions.append(f'bu:{user.id}')
         await ctx.guild.unban(user, reason=f"Changing ban reason to {reason}")
-        await ctx.guild.ban(user, reason=reason)
+        await ctx.guild.ban(user, reason=reason, delete_message_seconds=0)
 
         await ctx.send(f"Successfully updated {user} ({user.id})'s ban reason to `{reason}`!")
 
